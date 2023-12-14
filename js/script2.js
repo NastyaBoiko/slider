@@ -17,19 +17,57 @@ $(function() {
     $('.slider').on('click', '.slider__item', function() {
         // Скрываем текущий слайд
         console.log($(this));
-        $(this).addClass('hidden');
-        // Показываем следующий
-        if ($(this).next().length) {
+        $(this)
+            .addClass('hidden')
+            .removeAttr('data-active');
 
-            $(this).next().removeClass('hidden');
-            // $(this).next().fadeIn();
+            const next = $(this).next()
+        // Показываем следующий
+        if (next.length) {
+            next
+                .removeClass('hidden')
+                .attr('data-active', '');
         } else {
-            $('.slider__item:first-child').next().removeClass('hidden');
-            // $('.slider__item:first-child').fadeIn();
+            $('.slider__item:first-child').removeClass('hidden');
         }
     })
 
-    // $('.slider__item:not(:first-child)').addClass('hidden');
+    // Клик вперед
+    $('.next').on('click', function() {
+        const current = $('.slider').find('[data-active]');
+
+        // Следующий слайд
+        const next = current.next().length ? current.next() : $('.slider__item:first-child');
+
+        // Скрываем текущий
+        current
+            .addClass('hidden')
+            .removeAttr('data-active');
+        
+        // Показываем следующий
+        next
+            .removeClass('hidden')
+            .attr('data-active', '');
+
+    })
+    // Клик назад
+    $('.prev').on('click', function() {
+        const current = $('.slider').find('[data-active]');
+
+        // Следующий слайд
+        const prev = current.prev().length ? current.prev() : $('.slider__item:last-child');
+
+        // Скрываем текущий
+        current
+            .addClass('hidden')
+            .removeAttr('data-active');
+        
+        // Показываем предыдущий
+        prev
+            .removeClass('hidden')
+            .attr('data-active', '');
+
+    })
 
     $('.slider').on('click', '.slider__item', function(e) {
         // // e.preventDefault();
@@ -51,7 +89,3 @@ $(function() {
     // })
 
 })
-
-// $(document).ready(()=>{
-
-// })
