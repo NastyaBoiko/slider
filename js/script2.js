@@ -69,23 +69,4 @@ $(function() {
 
     })
 
-    $('.slider').on('click', '.slider__item', function(e) {
-        // // e.preventDefault();
-        // $(this).addClass('sss')
-        // $(this).attr('data-s', '2');
-        // // console.log($(this).data('s'));
-        // // $(this).data('s')
-        // console.log($(this));
-        // console.log(e);
-
-
-
-        // return false;
-    })
-
-    // $('.slider__item').each(function(el, index){
-    //     console.log($(this))
-    //     console.log(el, index)
-    // })
-
 })
