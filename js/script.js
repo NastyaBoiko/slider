@@ -13,14 +13,13 @@ sliderItems.forEach((slide, index) => {
 
     // Добавим дата-атрибут active
     sliderItems[0].setAttribute('data-active', '')
-
-    // Клик по слайдам
+    // Клик по слайдам / так делать нельзя - нужно делегировать на другой элемент - обертку
     slide.addEventListener('click', function() {
-
+    
         // Скрываем текущий слайд
         slide.classList.add('hidden');
         slide.removeAttribute('data-active');
-
+    
         // Индекс следующего слайда
         const nextSlideIndex = index + 1 === sliderItems.length ? 0 : index + 1;
         // if (index + 1 === sliderItems.length) {
@@ -28,7 +27,7 @@ sliderItems.forEach((slide, index) => {
         // } else {
         //     nextSlideIndex = index + 1;
         // }
-
+    
         // Находим следующий слайд
         const nextSlide = slider.querySelector(`[data-index="${nextSlideIndex}"]`);
         // Отображаем следующий слайд
@@ -36,6 +35,7 @@ sliderItems.forEach((slide, index) => {
         nextSlide.setAttribute('data-active', '')
     })
 });
+
 
 btnNext.onclick = function() {
     // Скрываем текущий
